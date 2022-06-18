@@ -2,17 +2,28 @@ import requests
 import io
 from PIL import Image
 import time
+import get_mails
 import threading
-
+from selenium.webdriver.chrome.options import Options
+from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
 def scroll_to_end(wd):
     wd.execute_script("window.scrollTo(0, document.body.scrollHeight);")
     time.sleep(1)  
 
-def fetch_image_urls(wd):
-      
-    query = str(input("Enter your query: "))
-    max_links_to_fetch = int(input("Enter max limit for screenshots: "))
+def fetch_image_urls(query , max_links_to_fetch):
     
+
+    get_mails.clust_dir("Google")
+    max_links_to_fetch = int(max_links_to_fetch)
+    chrome_options = Options()
+    chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--start-maximized')
+    wd = webdriver.Chrome(ChromeDriverManager().install() , chrome_options=chrome_options)
+    options = webdriver.ChromeOptions()
+    options.headless = True
+
+
     # build the google query
     search_url = "https://www.google.com/search?safe=off&site=&tbm=isch&source=hp&q={q}&oq={q}&gs_l=img"
 

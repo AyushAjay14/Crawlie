@@ -18,7 +18,7 @@ def text_to_pdf(text, filename):
 
     for line in splitted:
         try:
-            lines = textwrap.wrap(line, width_text)
+            lines = textwrap.wrap(line, width_text , replace_whitespace=False)
 
             if len(lines) == 0:
                 pdf.ln()

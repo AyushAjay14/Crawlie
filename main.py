@@ -20,7 +20,7 @@ def main_func(url , depth , ss , cluster):
     # starting url. replace google with your own url.
     starting_url = str(url)
     ext = tldextract.extract(url)
-    ss = ss
+    ss = int(ss)
     chrome_options = Options()
     chrome_options.add_argument('--headless')
     chrome_options.add_argument('--start-maximized')
@@ -29,10 +29,6 @@ def main_func(url , depth , ss , cluster):
     options.headless = True
 
 
-    if(cluster):
-        get_mails.clust_dir("Google")
-        clustter.fetch_image_urls(driver)
-        sys.exit()
     #making new directory 
     get_mails.create_dir(ext.domain)
 
@@ -59,8 +55,11 @@ def main_func(url , depth , ss , cluster):
         processed_urls.add(url)
 
         if(ss > 0):
-            seleNium.screenshot(driver , url , ss)
-            ss -=1
+            try:
+                seleNium.screenshot(driver , url , ss)
+                ss -=1
+            except:
+                pass
         # extract base url to resolve relative links
         parts = urlsplit(url)
         base_url = "{0.scheme}://{0.netloc}".format(parts)
@@ -85,8 +84,11 @@ def main_func(url , depth , ss , cluster):
         for img in imgs:
             if img.has_attr('src'):
                 a = img['src']
-                if(a[0] == '/' and a[1] == '/'):
-                    a = a[2:]
+                try:
+                    if(a[0] == '/' and a[1] == '/'):
+                        a = a[2:]
+                except:
+                    print(None)
                 images.append(a)
         
         # Once this document is parsed and processed, now find and process all the anchors i.e. linked urls in this document
@@ -107,6 +109,8 @@ def main_func(url , depth , ss , cluster):
     df.to_csv('email.csv', index=False)
     df = pd.DataFrame(images, columns=["Image-Links"])
     df.to_csv('images.csv', index=False)
+    df = pd.DataFrame(processed_urls, columns=["Crawled-Links"])
+    df.to_csv('Crawled.csv', index=False)
     f.close()
     f = open("Headers.txt")
     data = f.read()
