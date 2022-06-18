@@ -9,7 +9,8 @@ def create_dir(url):
     dir = os.getcwd()
     path = os.path.join(dir,url)
     if(os.path.exists(path)):
-        os.makedirs(path + "(1)")
+        subprocess.run(f'rmdir /s /q {path}' , shell=True)
+        os.makedirs(path)
         os.chdir(path)
     else:
         os.makedirs(path)

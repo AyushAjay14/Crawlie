@@ -74,7 +74,7 @@ def main_func(url , depth , ss , cluster):
             # ignore pages with errors and continue with next url
             continue
 
-        f.write(str(response.headers))
+        f.write(str(response.headers) + '\n')
         # extract all email addresses and add them into the resulting set
         emails.update(get_mails.gemails(response))
         # create a beutiful soup for the html document
