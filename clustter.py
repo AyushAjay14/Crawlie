@@ -17,6 +17,7 @@ def fetch_image_urls(query , max_links_to_fetch):
     get_mails.clust_dir("Google")
     max_links_to_fetch = int(max_links_to_fetch)
     chrome_options = Options()
+    chrome_options.add_argument('--log-level=1')
     chrome_options.add_argument('--headless')
     chrome_options.add_argument('--start-maximized')
     wd = webdriver.Chrome(ChromeDriverManager().install() , chrome_options=chrome_options)

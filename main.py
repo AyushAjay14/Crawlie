@@ -22,6 +22,7 @@ def main_func(url , depth , ss , cluster):
     ext = tldextract.extract(url)
     ss = int(ss)
     chrome_options = Options()
+    chrome_options.add_argument('--log-level=1')
     chrome_options.add_argument('--headless')
     chrome_options.add_argument('--start-maximized')
     driver = webdriver.Chrome(ChromeDriverManager().install() , chrome_options=chrome_options)
@@ -67,7 +68,8 @@ def main_func(url , depth , ss , cluster):
 
         # get url's content
         print("Crawling URL %s" % url)
-        my_headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36","Accept-Encoding": "gzip, deflate"}
+        my_headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36","Accept-Encoding": "gzip, deflate" ,
+        "permissions-policy": "interest-cohort=()"}
         try:
             response = requests.get(url , headers=my_headers)
         except (requests.exceptions.MissingSchema, requests.exceptions.ConnectionError):
