@@ -9,7 +9,9 @@
 
 ## Demo
 
-![Demo](https://drive.google.com/file/d/13Yc2k2P_uTn-xeZrxAWKWp3AWwrdQFeC/view?usp=sharing)
+
+https://user-images.githubusercontent.com/79143485/182374276-7e4f9b8f-e37b-4a97-aeaf-25c1f6126436.mp4
+
 
 
 ## Install
