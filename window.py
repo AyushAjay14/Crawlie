@@ -163,7 +163,7 @@ entry2.place(
     width = 321.0,
     height = 42)
 var1 = IntVar()
-c1 = Checkbutton(window, text="custer", variable=var1 , bg="white" , onvalue = 1, offvalue = 0,
+c1 = Checkbutton(window, text="cluster", variable=var1 , bg="white" , onvalue = 1, offvalue = 0,
 command=new_window)
 c1.place(x=705 , y = 322)
 window.resizable(False, False)

@@ -1,8 +1,9 @@
-beautifulsoup4==4.11.1
-fpdf==1.7.2
-pandas==1.4.2
-Pillow==9.1.1
-requests==2.21.0
-selenium==4.2.0
-tldextract==3.1.2
-webdriver_manager==3.7.0
+beautifulsoup4
+fpdf
+pandas
+Pillow
+requests
+selenium
+tldextract
+webdriver_manager
+lxml

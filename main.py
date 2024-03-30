@@ -25,7 +25,7 @@ def main_func(url , depth , ss , cluster):
     chrome_options.add_argument('--log-level=1')
     chrome_options.add_argument('--headless')
     chrome_options.add_argument('--start-maximized')
-    driver = webdriver.Chrome(ChromeDriverManager().install() , chrome_options=chrome_options)
+    driver = webdriver.Chrome( options=chrome_options)
     options = webdriver.ChromeOptions()
     options.headless = True
 
